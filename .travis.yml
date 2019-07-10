@@ -1,0 +1,15 @@
+language: python
+python:
+  - "3.6"
+cache: pip
+
+install: 
+  - pip install -r requirements.txt
+
+script:
+# - PYTHONPATH=$PWD/src pytest --cov=src/ test
+  - black --check --verbose api/*.py urlShortenerAPI/*py *.py
+
+branches:
+  only:
+  - master
