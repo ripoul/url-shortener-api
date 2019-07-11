@@ -1,8 +1,10 @@
 from django.shortcuts import render
-
-# Create your views here.
+import requests
 from django.http import HttpResponse
+import json
 
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+def tinyurl(request):
+    payload = {'url': request.GET.get('url', '')}
+    r = requests.get("http://tinyurl.com/api-create.php", params=payload)
+    ret = json.dumps({'url': r.text})
+    return HttpResponse(ret)
