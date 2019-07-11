@@ -10,7 +10,7 @@ def tinyurl(request):
         payload = {"url": url}
         r = requests.get("http://tinyurl.com/api-create.php", params=payload)
         ret = json.dumps({"url": r.text})
-        return HttpResponse(ret)
+        return HttpResponse(ret, content_type='application/json')
     else:
         ret = json.dumps({"error": "url parameter missing"})
-        return HttpResponse(ret, status=400)
+        return HttpResponse(ret, status=400, content_type='application/json')
