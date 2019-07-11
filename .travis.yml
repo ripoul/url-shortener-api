@@ -5,7 +5,7 @@ python:
 cache: pip
 
 install: 
-  - pip install -r requirements.txt
+  - pip install -r requirements-build.txt
 
 script:
   - python manage.py test
