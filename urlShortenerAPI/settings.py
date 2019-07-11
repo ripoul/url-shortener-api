@@ -116,6 +116,7 @@ STATIC_URL = "/static/"
 
 try:
     import django_heroku
+
     django_heroku.settings(locals())
 except:
     pass
