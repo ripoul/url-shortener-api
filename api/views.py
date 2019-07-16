@@ -41,7 +41,6 @@ def rebrandly(request):
 
         if r.status_code == requests.codes.ok:
             link = r.json()
-            print("Long URL was %s, short URL is %s" % (link["destination"], link["shortUrl"]))
             ret = json.dumps({"url": link["shortUrl"]})
             return HttpResponse(ret, content_type="application/json")
         else:
