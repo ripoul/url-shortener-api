@@ -26,7 +26,6 @@ def rebrandly(request):
             # , "title": "Rebrandly YouTube channel"
         }
 
-
         requestHeaders = {
             "Content-type": "application/json",
             "apikey": "7b9459064585418cbcb1fc2538e2d2a9",
@@ -44,7 +43,12 @@ def rebrandly(request):
             ret = json.dumps({"url": link["shortUrl"]})
             return HttpResponse(ret, content_type="application/json")
         else:
-            ret = json.dumps({"error": "error with the request to the rebrandly api", "detail": r.text})
+            ret = json.dumps(
+                {
+                    "error": "error with the request to the rebrandly api",
+                    "detail": r.text,
+                }
+            )
             return HttpResponse(ret, status=400, content_type="application/json")
     else:
         ret = json.dumps({"error": "url parameter missing"})

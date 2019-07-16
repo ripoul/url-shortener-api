@@ -17,6 +17,7 @@ class tinyurlCase(TestCase):
         response = c.get("/api/tinyurl")
         self.assertEqual(response.status_code, 400, "unexpected return code")
 
+
 class RebrandlyCase(TestCase):
     def setUp(self):
         pass
