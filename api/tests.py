@@ -22,7 +22,7 @@ class RebrandlyCase(TestCase):
     def setUp(self):
         pass
 
-    def test_url_contains_tinyurl(self):
+    def test_url_contains_rebrandly(self):
         c = Client()
         response = c.get("/api/rebrandly", {"url": "https://www.google.fr"})
         url = response.json()["url"]
@@ -32,3 +32,14 @@ class RebrandlyCase(TestCase):
         c = Client()
         response = c.get("/api/rebrandly")
         self.assertEqual(response.status_code, 400, "unexpected return code")
+
+
+class ProviderCase(TestCase):
+    def setUp(self):
+        pass
+
+    def test_nb_providers(self):
+        c = Client()
+        response = c.get("/api/providers")
+        url = response.json()
+        self.assertTrue(len(url) == 2)

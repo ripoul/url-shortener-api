@@ -2,7 +2,21 @@ import os
 from django.shortcuts import render
 import requests
 from django.http import HttpResponse
+from django.urls import reverse
 import json
+
+
+def providers(request):
+    try:
+        host = request.META["HTTP_HOST"]
+    except:
+        host = ""
+
+    ret = [
+        {"name": "rebrandly", "url": host + reverse(rebrandly)},
+        {"name": "tinyurl", "url": host + reverse(tinyurl)},
+    ]
+    return HttpResponse(json.dumps(ret), content_type="application/json")
 
 
 def tinyurl(request):
