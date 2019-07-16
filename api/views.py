@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render
 import requests
 from django.http import HttpResponse
@@ -28,7 +29,7 @@ def rebrandly(request):
 
         requestHeaders = {
             "Content-type": "application/json",
-            "apikey": "7b9459064585418cbcb1fc2538e2d2a9",
+            "apikey": os.getenv("rebrandlyAPI"),
             "workspace": "3e8f5fd7ef014e58b9f605737d91c750",
         }
 
