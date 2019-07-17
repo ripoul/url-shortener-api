@@ -42,7 +42,7 @@ class ProviderCase(TestCase):
         c = Client()
         response = c.get("/api/providers")
         url = response.json()
-        self.assertTrue(len(url) == 2)
+        self.assertTrue(len(url) == 3)
 
 
 class cuttlylCase(TestCase):

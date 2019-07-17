@@ -15,6 +15,7 @@ def providers(request):
     ret = [
         {"name": "rebrandly", "url": host + reverse(rebrandly)},
         {"name": "tinyurl", "url": host + reverse(tinyurl)},
+        {"name": "cuttly", "url": host + reverse(cuttly)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
