@@ -1,7 +1,6 @@
 <h1 align="center">Welcome to url-shortener-api 👋</h1>
 
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/ripoul/url-shortener-api)
-![Version](https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ripoul/url-shortener-api/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/ripoul/url-shortener-api.svg?branch=master)](https://travis-ci.org/ripoul/url-shortener-api)
 
