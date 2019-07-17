@@ -69,10 +69,11 @@ def rebrandly(request):
         ret = json.dumps({"error": "url parameter missing"})
         return HttpResponse(ret, status=400, content_type="application/json")
 
+
 def cuttly(request):
     url = request.GET.get("url", "")
     if url:
-        payload = {"short": url, "key": os.getenv("cuttlyAPI") }
+        payload = {"short": url, "key": os.getenv("cuttlyAPI")}
         r = requests.get("https://cutt.ly/api/api.php", params=payload)
         ret = json.dumps({"url": r.json()["url"]["shortLink"]})
         return HttpResponse(ret, content_type="application/json")

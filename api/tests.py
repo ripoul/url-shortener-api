@@ -44,6 +44,7 @@ class ProviderCase(TestCase):
         url = response.json()
         self.assertTrue(len(url) == 2)
 
+
 class cuttlylCase(TestCase):
     def setUp(self):
         pass
