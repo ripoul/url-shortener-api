@@ -21,6 +21,10 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
+If you want all the features, you will need a `.env` file with two items in it : 
+- cuttlyAPI -> contains the api key for cuttly
+- rebrandlyAPI -> contains the api key for rebrandly
+
 ## Run tests
 
 ```sh
