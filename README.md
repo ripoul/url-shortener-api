@@ -5,7 +5,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 [![Build Status](https://travis-ci.org/ripoul/url-shortener-api.svg?branch=master)](https://travis-ci.org/ripoul/url-shortener-api)
 
-> an api to shortener some url
+> an api to shorten some url
 
 ### 🏠 [Homepage](https://github.com/ripoul/url-shortener-api)
 
