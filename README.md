@@ -5,9 +5,14 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 [![Build Status](https://travis-ci.org/ripoul/url-shortener-api.svg?branch=master)](https://travis-ci.org/ripoul/url-shortener-api)
 
-> an api to shortener some url
+> an api to shorten some url
 
 ### 🏠 [Homepage](https://github.com/ripoul/url-shortener-api)
+
+The api endpoint is at this address : http://url-shortener.api.ripoul.fr/api/
+Here some usefull request : 
+- `http://url-shortener.api.ripoul.fr/api/providers` to list the available providers
+- `http://url-shortener.api.ripoul.fr/api/tinyurl?url=[LONG_URL]` to shorten the url with tinyurl
 
 ## Install
 
@@ -20,6 +25,10 @@ pip install -r requirements.txt
 ```sh
 python manage.py runserver
 ```
+
+If you want all the features, you will need a `.env` file with two items in it : 
+- cuttlyAPI -> contains the api key for cuttly
+- rebrandlyAPI -> contains the api key for rebrandly
 
 ## Run tests
 
