@@ -55,4 +55,4 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2019 [Jules](https://github.com/ripoul).<br />
-This project is [MIT](https://github.com/ripoul/url-shortener-api/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/ripoul/url-shortener-api/blob/master/LICENSE) licensed. 
