@@ -14,6 +14,8 @@ Here some usefull request :
 - `http://url-shortener.api.ripoul.fr/api/providers` to list the available providers
 - `http://url-shortener.api.ripoul.fr/api/tinyurl?url=[LONG_URL]` to shorten the url with tinyurl
 
+I've made a web interface. You can find the code [here](https://github.com/ripoul/url-shortener) and the live demo [here](https://url-shortener.ripoul.fr).
+
 ## Install
 
 ```sh
