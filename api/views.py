@@ -13,7 +13,10 @@ def providers(request):
         host = ""
 
     ret = [
-        {"name": "rebrandly", "url": request.scheme + "://" +  host + reverse(rebrandly)},
+        {
+            "name": "rebrandly",
+            "url": request.scheme + "://" + host + reverse(rebrandly),
+        },
         {"name": "tinyurl", "url": request.scheme + "://" + host + reverse(tinyurl)},
         {"name": "cuttly", "url": request.scheme + "://" + host + reverse(cuttly)},
     ]
