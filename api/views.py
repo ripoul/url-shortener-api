@@ -19,6 +19,7 @@ def providers(request):
         },
         {"name": "tinyurl", "url": request.scheme + "://" + host + reverse(tinyurl)},
         {"name": "cuttly", "url": request.scheme + "://" + host + reverse(cuttly)},
+        {"name": "test", "url": request.scheme + "://" + host + reverse(cuttly)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
