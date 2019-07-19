@@ -9,7 +9,7 @@
 
 ### 🏠 [Homepage](https://github.com/ripoul/url-shortener-api)
 
-The api endpoint is at this address : http://url-shortener.api.ripoul.fr/api/
+The api endpoint is at http://url-shortener.api.ripoul.fr/api/ or https://url-shortener-ripoul.herokuapp.com.
 Here some usefull request : 
 - `http://url-shortener.api.ripoul.fr/api/providers` to list the available providers
 - `http://url-shortener.api.ripoul.fr/api/tinyurl?url=[LONG_URL]` to shorten the url with tinyurl
