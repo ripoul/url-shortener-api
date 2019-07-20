@@ -42,7 +42,7 @@ class ProviderCase(TestCase):
         c = Client()
         response = c.get("/api/providers")
         url = response.json()
-        self.assertTrue(len(url) == 3)
+        self.assertTrue(len(url) == 4)
 
 
 class cuttlylCase(TestCase):
@@ -58,4 +58,20 @@ class cuttlylCase(TestCase):
     def test_if_no_param(self):
         c = Client()
         response = c.get("/api/cuttly")
+        self.assertEqual(response.status_code, 400, "unexpected return code")
+
+
+class bitlylCase(TestCase):
+    def setUp(self):
+        pass
+
+    def test_url_contains_cuttly(self):
+        c = Client()
+        response = c.get("/api/bitly", {"url": "https://www.google.fr"})
+        url = response.json()["url"]
+        self.assertTrue("bit.ly" in url)
+
+    def test_if_no_param(self):
+        c = Client()
+        response = c.get("/api/bitly")
         self.assertEqual(response.status_code, 400, "unexpected return code")

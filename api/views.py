@@ -19,6 +19,7 @@ def providers(request):
         },
         {"name": "tinyurl", "url": request.scheme + "://" + host + reverse(tinyurl)},
         {"name": "cuttly", "url": request.scheme + "://" + host + reverse(cuttly)},
+        {"name": "bitly", "url": request.scheme + "://" + host + reverse(bitly)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -81,6 +82,36 @@ def cuttly(request):
         r = requests.get("https://cutt.ly/api/api.php", params=payload)
         ret = json.dumps({"url": r.json()["url"]["shortLink"]})
         return HttpResponse(ret, content_type="application/json")
+    else:
+        ret = json.dumps({"error": "url parameter missing"})
+        return HttpResponse(ret, status=400, content_type="application/json")
+
+
+def bitly(request):
+    url = request.GET.get("url", "")
+    if url:
+        linkRequest = {"long_url": url, "group_guid": os.getenv("bittlyAPIgroup")}
+
+        requestHeaders = {
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + os.getenv("bitlyAPI"),
+        }
+
+        r = requests.post(
+            "https://api-ssl.bitly.com/v4/shorten",
+            data=json.dumps(linkRequest),
+            headers=requestHeaders,
+        )
+
+        if r.status_code == requests.codes.ok:
+            link = r.json()
+            ret = json.dumps({"url": link["link"]})
+            return HttpResponse(ret, content_type="application/json")
+        else:
+            ret = json.dumps(
+                {"error": "error with the request to the bitly api", "detail": r.text}
+            )
+            return HttpResponse(ret, status=400, content_type="application/json")
     else:
         ret = json.dumps({"error": "url parameter missing"})
         return HttpResponse(ret, status=400, content_type="application/json")

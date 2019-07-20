@@ -7,4 +7,5 @@ urlpatterns = [
     path("tinyurl", views.tinyurl, name="tinyurl"),
     path("rebrandly", views.rebrandly, name="rebrandly"),
     path("cuttly", views.cuttly, name="cuttly"),
+    path("bitly", views.bitly, name="bitly"),
 ]
