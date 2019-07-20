@@ -103,13 +103,17 @@ def bitly(request):
             headers=requestHeaders,
         )
 
-        if r.status_code == requests.codes.ok:
+        if r.status_code == 200 or r.status_code == 201:
             link = r.json()
             ret = json.dumps({"url": link["link"]})
             return HttpResponse(ret, content_type="application/json")
         else:
             ret = json.dumps(
-                {"error": "error with the request to the bitly api", "detail": r.text}
+                {
+                    "error": "error with the request to the bitly api",
+                    "detail": r.text,
+                    "code": r.status_code,
+                }
             )
             return HttpResponse(ret, status=400, content_type="application/json")
     else:
