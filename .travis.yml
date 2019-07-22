@@ -11,6 +11,9 @@ script:
   - coverage run --source='.' manage.py test
   - black --check --verbose api/*.py urlShortenerAPI/*py *.py
 
+after_success:
+  - codecov
+
 branches:
   only:
   - master
