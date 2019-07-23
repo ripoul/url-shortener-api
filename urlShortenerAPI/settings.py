@@ -30,7 +30,7 @@ SECRET_KEY = "14&d%!!gv3#nx*vhp=djuhhqazpafgovcnu6z=p_3!_^70u66p"
 DEBUG = distutils.util.strtobool(os.getenv("DEBUG", "True"))
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
