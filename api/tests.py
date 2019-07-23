@@ -22,6 +22,7 @@ class tinyurlCase(TestCase):
         response = c.post("/api/tinyurl")
         self.assertEqual(response.status_code, 405, "unexpected return code")
 
+
 class RebrandlyCase(TestCase):
     def setUp(self):
         pass
@@ -36,7 +37,7 @@ class RebrandlyCase(TestCase):
         c = Client()
         response = c.get("/api/rebrandly")
         self.assertEqual(response.status_code, 400, "unexpected return code")
-    
+
     def test_only_get(self):
         c = Client()
         response = c.post("/api/rebrandly")
@@ -52,7 +53,7 @@ class ProviderCase(TestCase):
         response = c.get("/api/providers")
         url = response.json()
         self.assertTrue(len(url) == 4)
-    
+
     def test_only_get(self):
         c = Client()
         response = c.post("/api/providers")
@@ -94,7 +95,7 @@ class bitlylCase(TestCase):
         c = Client()
         response = c.get("/api/bitly")
         self.assertEqual(response.status_code, 400, "unexpected return code")
-    
+
     def test_only_get(self):
         c = Client()
         response = c.post("/api/bitly")

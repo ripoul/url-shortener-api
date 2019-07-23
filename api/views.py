@@ -7,7 +7,7 @@ import json
 from django.views.decorators.http import require_http_methods
 
 
-@require_http_methods(["GET",])
+@require_http_methods(["GET"])
 def providers(request):
     try:
         host = request.META["HTTP_HOST"]
@@ -26,7 +26,7 @@ def providers(request):
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
 
-@require_http_methods(["GET",])
+@require_http_methods(["GET"])
 def tinyurl(request):
     url = request.GET.get("url", "")
     if url:
@@ -39,7 +39,7 @@ def tinyurl(request):
         return HttpResponse(ret, status=400, content_type="application/json")
 
 
-@require_http_methods(["GET",])
+@require_http_methods(["GET"])
 def rebrandly(request):
     url = request.GET.get("url", "")
     if url:
@@ -79,7 +79,7 @@ def rebrandly(request):
         return HttpResponse(ret, status=400, content_type="application/json")
 
 
-@require_http_methods(["GET",])
+@require_http_methods(["GET"])
 def cuttly(request):
     url = request.GET.get("url", "")
     if url:
@@ -92,7 +92,7 @@ def cuttly(request):
         return HttpResponse(ret, status=400, content_type="application/json")
 
 
-@require_http_methods(["GET",])
+@require_http_methods(["GET"])
 def bitly(request):
     url = request.GET.get("url", "")
     if url:
