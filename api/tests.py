@@ -17,6 +17,11 @@ class tinyurlCase(TestCase):
         response = c.get("/api/tinyurl")
         self.assertEqual(response.status_code, 400, "unexpected return code")
 
+    def test_only_get(self):
+        c = Client()
+        response = c.post("/api/tinyurl")
+        self.assertEqual(response.status_code, 405, "unexpected return code")
+
 
 class RebrandlyCase(TestCase):
     def setUp(self):
@@ -33,6 +38,11 @@ class RebrandlyCase(TestCase):
         response = c.get("/api/rebrandly")
         self.assertEqual(response.status_code, 400, "unexpected return code")
 
+    def test_only_get(self):
+        c = Client()
+        response = c.post("/api/rebrandly")
+        self.assertEqual(response.status_code, 405, "unexpected return code")
+
 
 class ProviderCase(TestCase):
     def setUp(self):
@@ -43,6 +53,11 @@ class ProviderCase(TestCase):
         response = c.get("/api/providers")
         url = response.json()
         self.assertTrue(len(url) == 4)
+
+    def test_only_get(self):
+        c = Client()
+        response = c.post("/api/providers")
+        self.assertEqual(response.status_code, 405, "unexpected return code")
 
 
 class cuttlylCase(TestCase):
@@ -60,6 +75,11 @@ class cuttlylCase(TestCase):
         response = c.get("/api/cuttly")
         self.assertEqual(response.status_code, 400, "unexpected return code")
 
+    def test_only_get(self):
+        c = Client()
+        response = c.post("/api/cuttly")
+        self.assertEqual(response.status_code, 405, "unexpected return code")
+
 
 class bitlylCase(TestCase):
     def setUp(self):
@@ -75,3 +95,8 @@ class bitlylCase(TestCase):
         c = Client()
         response = c.get("/api/bitly")
         self.assertEqual(response.status_code, 400, "unexpected return code")
+
+    def test_only_get(self):
+        c = Client()
+        response = c.post("/api/bitly")
+        self.assertEqual(response.status_code, 405, "unexpected return code")
