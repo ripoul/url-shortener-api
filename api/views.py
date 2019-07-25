@@ -67,10 +67,7 @@ def rebrandly(request):
         return HttpResponse(ret, content_type="application/json")
     else:
         ret = json.dumps(
-            {
-                "error": "error with the request to the rebrandly api",
-                "detail": r.text,
-            }
+            {"error": "error with the request to the rebrandly api", "detail": r.text}
         )
         return HttpResponse(ret, status=400, content_type="application/json")
 
