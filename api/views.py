@@ -13,7 +13,7 @@ from django.utils.decorators import decorator_from_middleware
 def providers(request):
     try:
         host = request.META["HTTP_HOST"]
-    except:
+    except KeyError:
         host = ""
 
     ret = [
