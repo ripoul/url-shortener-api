@@ -7,7 +7,7 @@ matrix:
         - "3.7"
       cache: pip
 
-      install: 
+      install:
         - pip install -r requirements-build.txt
 
       script:
@@ -23,7 +23,7 @@ matrix:
         - "3.6"
       cache: pip
 
-      install: 
+      install:
         - pip install -r requirements-build.txt
 
       script:
