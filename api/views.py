@@ -65,7 +65,7 @@ def rebrandly(request):
         link = r.json()
         ret = json.dumps({"url": link["shortUrl"]})
         return HttpResponse(ret, content_type="application/json")
-    
+
     ret = json.dumps(
         {"error": "error with the request to the rebrandly api", "detail": r.text}
     )
@@ -103,7 +103,7 @@ def bitly(request):
         link = r.json()
         ret = json.dumps({"url": link["link"]})
         return HttpResponse(ret, content_type="application/json")
-    
+
     ret = json.dumps(
         {
             "error": "error with the request to the bitly api",
