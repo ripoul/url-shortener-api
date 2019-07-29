@@ -13,7 +13,7 @@ from django.utils.decorators import decorator_from_middleware
 def providers(request):
     try:
         host = request.META["HTTP_HOST"]
-    except:
+    except KeyError:
         host = ""
 
     ret = [
@@ -66,11 +66,11 @@ def rebrandly(request):
         link = r.json()
         ret = json.dumps({"url": link["shortUrl"]})
         return HttpResponse(ret, content_type="application/json")
-    else:
-        ret = json.dumps(
-            {"error": "error with the request to the rebrandly api", "detail": r.text}
-        )
-        return HttpResponse(ret, status=400, content_type="application/json")
+
+    ret = json.dumps(
+        {"error": "error with the request to the rebrandly api", "detail": r.text}
+    )
+    return HttpResponse(ret, status=400, content_type="application/json")
 
 
 @require_http_methods(["GET"])

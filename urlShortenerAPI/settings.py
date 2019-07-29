@@ -124,5 +124,5 @@ try:
     import django_heroku
 
     django_heroku.settings(locals())
-except:
+except ImportError:
     pass
