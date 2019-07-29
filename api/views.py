@@ -121,5 +121,5 @@ def m360us(request):
     url = request.GET.get("url", "")
     payload = {"link": url}
     r = requests.post("https://m360.us/add", data=payload)
-    ret = json.dumps({"url": "http://"+r.text})
+    ret = json.dumps({"url": "http://" + r.text})
     return HttpResponse(ret, content_type="application/json")
