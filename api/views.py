@@ -27,6 +27,7 @@ def providers(request):
         {"name": "bit.ly", "url": request.scheme + "://" + host + reverse(bitly)},
         {"name": "m360.us", "url": request.scheme + "://" + host + reverse(m360us)},
         {"name": "osdb.link", "url": request.scheme + "://" + host + reverse(osdblink)},
+        {"name": "is.gd", "url": request.scheme + "://" + host + reverse(isgd)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -140,4 +141,14 @@ def osdblink(request):
         found = ""  # apply your error handling
 
     ret = json.dumps({"url": found})
+    return HttpResponse(ret, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def isgd(request):
+    url = request.GET.get("url", "")
+    payload = {"url": url, "format": "simple"}
+    r = requests.get("https://is.gd/create.php", params=payload)
+    ret = json.dumps({"url": r.text})
     return HttpResponse(ret, content_type="application/json")

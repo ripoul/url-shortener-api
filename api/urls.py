@@ -10,4 +10,5 @@ urlpatterns = [
     path("bitly", views.bitly, name="bitly"),
     path("m360us", views.m360us, name="m360us"),
     path("osdblink", views.osdblink, name="osdblink"),
+    path("isgd", views.isgd, name="isgd"),
 ]
