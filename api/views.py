@@ -30,6 +30,7 @@ def providers(request):
         {"name": "is.gd", "url": request.scheme + "://" + host + reverse(isgd)},
         {"name": "chilp.it", "url": request.scheme + "://" + host + reverse(chilpit)},
         {"name": "clck.ru", "url": request.scheme + "://" + host + reverse(clckru)},
+        {"name": "da.gd", "url": request.scheme + "://" + host + reverse(dagd)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -172,5 +173,15 @@ def clckru(request):
     url = request.GET.get("url", "")
     payload = {"url": url}
     r = requests.get("https://clck.ru/--", params=payload)
+    ret = json.dumps({"url": r.text})
+    return HttpResponse(ret, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def dagd(request):
+    url = request.GET.get("url", "")
+    payload = {"url": url}
+    r = requests.get("https://da.gd/shorten", params=payload)
     ret = json.dumps({"url": r.text})
     return HttpResponse(ret, content_type="application/json")
