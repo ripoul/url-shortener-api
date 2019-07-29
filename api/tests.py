@@ -2,6 +2,21 @@ from django.test import TestCase, Client
 import json
 
 
+class ProviderCase(TestCase):
+    def setUp(self):
+        pass
+
+    def test_nb_providers(self):
+        c = Client()
+        response = c.get("/api/providers")
+        url = response.json()
+        self.assertTrue(len(url) == 6)
+
+    def test_only_get(self):
+        c = Client()
+        response = c.post("/api/providers")
+        self.assertEqual(response.status_code, 405, "unexpected return code")
+
 class tinyurlCase(TestCase):
     def setUp(self):
         pass
@@ -41,22 +56,6 @@ class RebrandlyCase(TestCase):
     def test_only_get(self):
         c = Client()
         response = c.post("/api/rebrandly")
-        self.assertEqual(response.status_code, 405, "unexpected return code")
-
-
-class ProviderCase(TestCase):
-    def setUp(self):
-        pass
-
-    def test_nb_providers(self):
-        c = Client()
-        response = c.get("/api/providers")
-        url = response.json()
-        self.assertTrue(len(url) == 5)
-
-    def test_only_get(self):
-        c = Client()
-        response = c.post("/api/providers")
         self.assertEqual(response.status_code, 405, "unexpected return code")
 
 
@@ -120,4 +119,24 @@ class m360usCase(TestCase):
     def test_only_get(self):
         c = Client()
         response = c.post("/api/m360us")
+        self.assertEqual(response.status_code, 405, "unexpected return code")
+
+class osdblinkCase(TestCase):
+    def setUp(self):
+        pass
+
+    def test_url_contains_cuttly(self):
+        c = Client()
+        response = c.get("/api/osdblink", {"url": "https://www.google.fr"})
+        url = response.json()["url"]
+        self.assertTrue("http://osdb.link" in url)
+
+    def test_if_no_param(self):
+        c = Client()
+        response = c.get("/api/osdblink")
+        self.assertEqual(response.status_code, 400, "unexpected return code")
+
+    def test_only_get(self):
+        c = Client()
+        response = c.post("/api/osdblink")
         self.assertEqual(response.status_code, 405, "unexpected return code")

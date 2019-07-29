@@ -1,4 +1,5 @@
 import os
+import re
 from django.shortcuts import render
 import requests
 from django.http import HttpResponse
@@ -18,13 +19,14 @@ def providers(request):
 
     ret = [
         {
-            "name": "rebrandly",
+            "name": "rebrand.ly",
             "url": request.scheme + "://" + host + reverse(rebrandly),
         },
         {"name": "tinyurl", "url": request.scheme + "://" + host + reverse(tinyurl)},
-        {"name": "cuttly", "url": request.scheme + "://" + host + reverse(cuttly)},
-        {"name": "bitly", "url": request.scheme + "://" + host + reverse(bitly)},
-        {"name": "m360us", "url": request.scheme + "://" + host + reverse(m360us)},
+        {"name": "cutt.ly", "url": request.scheme + "://" + host + reverse(cuttly)},
+        {"name": "bit.ly", "url": request.scheme + "://" + host + reverse(bitly)},
+        {"name": "m360.us", "url": request.scheme + "://" + host + reverse(m360us)},
+        {"name": "osdb.link", "url": request.scheme + "://" + host + reverse(osdblink)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -122,4 +124,20 @@ def m360us(request):
     payload = {"link": url}
     r = requests.post("https://m360.us/add", data=payload)
     ret = json.dumps({"url": "http://" + r.text})
+    return HttpResponse(ret, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def osdblink(request):
+    url = request.GET.get("url", "")
+    payload = {"url": url}
+    r = requests.post("http://osdb.link/", data=payload)
+    try:
+        found = re.search(r"(http://osdb.link/[a-zA-Z0-9]+)", r.text).group(1)
+    except AttributeError:
+        # AAA, ZZZ not found in the original string
+        found = ""  # apply your error handling
+
+    ret = json.dumps({"url": found})
     return HttpResponse(ret, content_type="application/json")
