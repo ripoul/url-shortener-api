@@ -8,4 +8,10 @@ urlpatterns = [
     path("rebrandly", views.rebrandly, name="rebrandly"),
     path("cuttly", views.cuttly, name="cuttly"),
     path("bitly", views.bitly, name="bitly"),
+    path("m360us", views.m360us, name="m360us"),
+    path("osdblink", views.osdblink, name="osdblink"),
+    path("isgd", views.isgd, name="isgd"),
+    path("chilpit", views.chilpit, name="chilpit"),
+    path("clckru", views.clckru, name="clckru"),
+    path("dagd", views.dagd, name="dagd"),
 ]
