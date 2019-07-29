@@ -11,4 +11,5 @@ urlpatterns = [
     path("m360us", views.m360us, name="m360us"),
     path("osdblink", views.osdblink, name="osdblink"),
     path("isgd", views.isgd, name="isgd"),
+    path("chilpit", views.chilpit, name="chilpit"),
 ]

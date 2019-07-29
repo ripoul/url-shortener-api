@@ -28,6 +28,7 @@ def providers(request):
         {"name": "m360.us", "url": request.scheme + "://" + host + reverse(m360us)},
         {"name": "osdb.link", "url": request.scheme + "://" + host + reverse(osdblink)},
         {"name": "is.gd", "url": request.scheme + "://" + host + reverse(isgd)},
+        {"name": "chilp.it", "url": request.scheme + "://" + host + reverse(chilpit)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -150,5 +151,15 @@ def isgd(request):
     url = request.GET.get("url", "")
     payload = {"url": url, "format": "simple"}
     r = requests.get("https://is.gd/create.php", params=payload)
+    ret = json.dumps({"url": r.text})
+    return HttpResponse(ret, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def chilpit(request):
+    url = request.GET.get("url", "")
+    payload = {"url": url}
+    r = requests.get("http://chilp.it/api.php", params=payload)
     ret = json.dumps({"url": r.text})
     return HttpResponse(ret, content_type="application/json")
