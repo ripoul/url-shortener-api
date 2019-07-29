@@ -17,6 +17,7 @@ class ProviderCase(TestCase):
         response = c.post("/api/providers")
         self.assertEqual(response.status_code, 405, "unexpected return code")
 
+
 class tinyurlCase(TestCase):
     def setUp(self):
         pass
@@ -120,6 +121,7 @@ class m360usCase(TestCase):
         c = Client()
         response = c.post("/api/m360us")
         self.assertEqual(response.status_code, 405, "unexpected return code")
+
 
 class osdblinkCase(TestCase):
     def setUp(self):
