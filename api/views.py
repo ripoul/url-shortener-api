@@ -29,6 +29,7 @@ def providers(request):
         {"name": "osdb.link", "url": request.scheme + "://" + host + reverse(osdblink)},
         {"name": "is.gd", "url": request.scheme + "://" + host + reverse(isgd)},
         {"name": "chilp.it", "url": request.scheme + "://" + host + reverse(chilpit)},
+        {"name": "clck.ru", "url": request.scheme + "://" + host + reverse(clckru)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -161,5 +162,15 @@ def chilpit(request):
     url = request.GET.get("url", "")
     payload = {"url": url}
     r = requests.get("http://chilp.it/api.php", params=payload)
+    ret = json.dumps({"url": r.text})
+    return HttpResponse(ret, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def clckru(request):
+    url = request.GET.get("url", "")
+    payload = {"url": url}
+    r = requests.get("https://clck.ru/--", params=payload)
     ret = json.dumps({"url": r.text})
     return HttpResponse(ret, content_type="application/json")
