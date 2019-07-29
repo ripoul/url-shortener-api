@@ -52,7 +52,7 @@ class ProviderCase(TestCase):
         c = Client()
         response = c.get("/api/providers")
         url = response.json()
-        self.assertTrue(len(url) == 4)
+        self.assertTrue(len(url) == 5)
 
     def test_only_get(self):
         c = Client()
@@ -99,4 +99,25 @@ class bitlylCase(TestCase):
     def test_only_get(self):
         c = Client()
         response = c.post("/api/bitly")
+        self.assertEqual(response.status_code, 405, "unexpected return code")
+
+
+class m360usCase(TestCase):
+    def setUp(self):
+        pass
+
+    def test_url_contains_cuttly(self):
+        c = Client()
+        response = c.get("/api/m360us", {"url": "https://www.google.fr"})
+        url = response.json()["url"]
+        self.assertTrue("m360.us" in url)
+
+    def test_if_no_param(self):
+        c = Client()
+        response = c.get("/api/m360us")
+        self.assertEqual(response.status_code, 400, "unexpected return code")
+
+    def test_only_get(self):
+        c = Client()
+        response = c.post("/api/m360us")
         self.assertEqual(response.status_code, 405, "unexpected return code")

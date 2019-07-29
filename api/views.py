@@ -24,6 +24,7 @@ def providers(request):
         {"name": "tinyurl", "url": request.scheme + "://" + host + reverse(tinyurl)},
         {"name": "cuttly", "url": request.scheme + "://" + host + reverse(cuttly)},
         {"name": "bitly", "url": request.scheme + "://" + host + reverse(bitly)},
+        {"name": "m360us", "url": request.scheme + "://" + host + reverse(m360us)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -103,12 +104,22 @@ def bitly(request):
         link = r.json()
         ret = json.dumps({"url": link["link"]})
         return HttpResponse(ret, content_type="application/json")
-    else:
-        ret = json.dumps(
-            {
-                "error": "error with the request to the bitly api",
-                "detail": r.text,
-                "code": r.status_code,
-            }
-        )
-        return HttpResponse(ret, status=400, content_type="application/json")
+
+    ret = json.dumps(
+        {
+            "error": "error with the request to the bitly api",
+            "detail": r.text,
+            "code": r.status_code,
+        }
+    )
+    return HttpResponse(ret, status=400, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def m360us(request):
+    url = request.GET.get("url", "")
+    payload = {"link": url}
+    r = requests.post("https://m360.us/add", data=payload)
+    ret = json.dumps({"url": "http://"+r.text})
+    return HttpResponse(ret, content_type="application/json")
