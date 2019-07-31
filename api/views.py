@@ -32,6 +32,7 @@ def providers(request):
         {"name": "clck.ru", "url": request.scheme + "://" + host + reverse(clckru)},
         {"name": "da.gd", "url": request.scheme + "://" + host + reverse(dagd)},
         {"name": "qps.ru", "url": request.scheme + "://" + host + reverse(qpsru)},
+        {"name": "tiny.cc", "url": request.scheme + "://" + host + reverse(tinycc)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -195,4 +196,25 @@ def qpsru(request):
     payload = {"url": url}
     r = requests.get("http://qps.ru/api", params=payload)
     ret = json.dumps({"url": r.text})
+    return HttpResponse(ret, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def tinycc(request):
+    url = request.GET.get("url", "")
+    payload = {
+        "c": "rest_api",
+        "version": "2.0.3",
+        "format": "json",
+        "m": "shorten",
+        "longUrl": url,
+        "login": os.getenv("tinyccLogin"),
+        "apiKey": os.getenv("tinyccAPI"),
+    }
+    headers = {
+        "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux) Gecko/20100101 " "Firefox/61.0"
+    }
+    r = requests.get("https://tiny.cc/", params=payload, headers=headers)
+    ret = json.dumps({"url": r.json()["results"]["short_url"]})
     return HttpResponse(ret, content_type="application/json")

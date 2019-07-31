@@ -15,4 +15,5 @@ urlpatterns = [
     path("clckru", views.clckru, name="clckru"),
     path("dagd", views.dagd, name="dagd"),
     path("qpsru", views.qpsru, name="qpsru"),
+    path("tinycc", views.tinycc, name="tinycc"),
 ]
