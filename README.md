@@ -36,6 +36,8 @@ If you want all the features, you will need a `.env` file with four items in it 
 - rebrandlyAPI -> contains the api key for rebrandly
 - bittlyAPIgroup -> contains the api group id from bittly
 - bitlyAPI -> contains the api key from bittly
+- tinyccAPI -> contains the api key from tinycc
+- tinyccLogin -> contains the login of tinycc
 
 ## Run tests
 
