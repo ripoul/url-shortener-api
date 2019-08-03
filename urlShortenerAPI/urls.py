@@ -15,5 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.views.generic.base import RedirectView
 
-urlpatterns = [path("api/", include("api.urls"))]
+urlpatterns = [
+    path("", RedirectView.as_view(url="/api/providers")),
+    path("api/", include("api.urls")),
+]
