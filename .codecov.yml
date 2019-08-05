@@ -8,9 +8,9 @@ coverage:
   range: "70...100"
 
   status:
-    project: yes
+    project: no
     patch: no
-    changes: yes
+    changes: no
 
 parsers:
   gcov:
