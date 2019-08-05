@@ -3,9 +3,6 @@ import json
 
 
 class ProviderCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_nb_providers(self):
         c = Client()
         response = c.get("/api/providers")
@@ -19,9 +16,6 @@ class ProviderCase(TestCase):
 
 
 class tinyurlCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/tinyurl", {"url": "https://www.google.fr"})
@@ -40,9 +34,6 @@ class tinyurlCase(TestCase):
 
 
 class RebrandlyCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/rebrandly", {"url": "https://www.google.fr"})
@@ -61,9 +52,6 @@ class RebrandlyCase(TestCase):
 
 
 class cuttlylCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/cuttly", {"url": "https://www.google.fr"})
@@ -82,9 +70,6 @@ class cuttlylCase(TestCase):
 
 
 class bitlylCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/bitly", {"url": "https://www.google.fr"})
@@ -103,9 +88,6 @@ class bitlylCase(TestCase):
 
 
 class m360usCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/m360us", {"url": "https://www.google.fr"})
@@ -124,9 +106,6 @@ class m360usCase(TestCase):
 
 
 class osdblinkCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/osdblink", {"url": "https://www.google.fr"})
@@ -145,9 +124,6 @@ class osdblinkCase(TestCase):
 
 
 class isgdCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/isgd", {"url": "https://www.google.fr"})
@@ -166,9 +142,6 @@ class isgdCase(TestCase):
 
 
 class chilpitCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/chilpit", {"url": "https://www.google.fr"})
@@ -187,9 +160,6 @@ class chilpitCase(TestCase):
 
 
 class clckruCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/clckru", {"url": "https://www.google.fr"})
@@ -208,9 +178,6 @@ class clckruCase(TestCase):
 
 
 class dagdCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/dagd", {"url": "https://www.google.fr"})
@@ -229,9 +196,6 @@ class dagdCase(TestCase):
 
 
 class qpsruCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/qpsru", {"url": "https://www.google.fr"})
@@ -250,9 +214,6 @@ class qpsruCase(TestCase):
 
 
 class tinyccCase(TestCase):
-    def setUp(self):
-        pass
-
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/tinycc", {"url": "https://www.google.fr"})
