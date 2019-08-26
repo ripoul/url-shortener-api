@@ -228,5 +228,4 @@ def qrcode_view(request):
     img = qrcode.make(url)
     response = HttpResponse(content_type="image/png")
     img.save(response, "PNG")
-    img.save("/home/ripoul/test.png", "PNG")
     return response
