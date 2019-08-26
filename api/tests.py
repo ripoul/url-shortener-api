@@ -229,3 +229,21 @@ class tinyccCase(TestCase):
         c = Client()
         response = c.post("/api/tinycc")
         self.assertEqual(response.status_code, 405, "unexpected return code")
+
+
+class qrcodeCase(TestCase):
+    def test_url_contains_provider(self):
+        c = Client()
+        response = c.get("/api/qrcode", {"url": "https://www.google.fr"})
+        ct = response["Content-type"]
+        self.assertTrue(ct == "image/png")
+
+    def test_if_no_param(self):
+        c = Client()
+        response = c.get("/api/qrcode")
+        self.assertEqual(response.status_code, 400, "unexpected return code")
+
+    def test_only_get(self):
+        c = Client()
+        response = c.post("/api/qrcode")
+        self.assertEqual(response.status_code, 405, "unexpected return code")
