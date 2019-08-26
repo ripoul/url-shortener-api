@@ -9,7 +9,6 @@ from django.views.decorators.http import require_http_methods
 from .middleware import APIMiddleware
 from django.utils.decorators import decorator_from_middleware
 import qrcode
-from io import StringIO
 
 
 @require_http_methods(["GET"])
@@ -220,6 +219,7 @@ def tinycc(request):
     r = requests.get("https://tiny.cc/", params=payload, headers=headers)
     ret = json.dumps({"url": r.json()["results"]["short_url"]})
     return HttpResponse(ret, content_type="application/json")
+
 
 @require_http_methods(["GET"])
 @decorator_from_middleware(APIMiddleware)
