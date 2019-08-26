@@ -16,4 +16,5 @@ urlpatterns = [
     path("dagd", views.dagd, name="dagd"),
     path("qpsru", views.qpsru, name="qpsru"),
     path("tinycc", views.tinycc, name="tinycc"),
+    path("qrcode", views.qrcode_view, name="qrcode"),
 ]
