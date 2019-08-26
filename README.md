@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to url-shortener-api 👋</h1>
 
 ![Python version](https://img.shields.io/badge/python-3.6%20%7C%203.7-blue.svg)
-[![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/ripoul/url-shortener-api)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ripoul/url-shortener-api)](https://dependabot.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ripoul/url-shortener-api/blob/master/LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 [![Build Status](https://travis-ci.org/ripoul/url-shortener-api.svg?branch=master)](https://travis-ci.org/ripoul/url-shortener-api)
