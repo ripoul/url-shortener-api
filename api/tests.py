@@ -249,7 +249,7 @@ class shrturiCase(TestCase):
         self.assertEqual(response.status_code, 405, "unexpected return code")
 
 
-class shrturiCase(TestCase):
+class cleanuriCase(TestCase):
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/cleanuri", {"url": "https://www.google.fr"})
