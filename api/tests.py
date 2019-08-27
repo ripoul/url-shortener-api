@@ -7,7 +7,7 @@ class ProviderCase(TestCase):
         c = Client()
         response = c.get("/api/providers")
         url = response.json()
-        self.assertTrue(len(url) == 12)
+        self.assertTrue(len(url) == 13)
 
     def test_only_get(self):
         c = Client()
@@ -228,6 +228,24 @@ class tinyccCase(TestCase):
     def test_only_get(self):
         c = Client()
         response = c.post("/api/tinycc")
+        self.assertEqual(response.status_code, 405, "unexpected return code")
+
+
+class shrturiCase(TestCase):
+    def test_url_contains_provider(self):
+        c = Client()
+        response = c.get("/api/shrturi", {"url": "https://www.google.fr"})
+        url = response.json()["url"]
+        self.assertTrue("https://shrturi.com" in url)
+
+    def test_if_no_param(self):
+        c = Client()
+        response = c.get("/api/shrturi")
+        self.assertEqual(response.status_code, 400, "unexpected return code")
+
+    def test_only_get(self):
+        c = Client()
+        response = c.post("/api/shrturi")
         self.assertEqual(response.status_code, 405, "unexpected return code")
 
 
