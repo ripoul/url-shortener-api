@@ -42,6 +42,7 @@ def providers(request):
             "name": "cleanuri.com",
             "url": request.scheme + "://" + host + reverse(cleanuri),
         },
+        {"name": "rel.ink", "url": request.scheme + "://" + host + reverse(relink)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -246,6 +247,16 @@ def cleanuri(request):
     payload = {"url": url}
     r = requests.post("https://cleanuri.com/api/v1/shorten", data=payload)
     ret = json.dumps({"url": r.json()["result_url"]})
+    return HttpResponse(ret, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def relink(request):
+    url = request.GET.get("url", "")
+    payload = {"url": url}
+    r = requests.post("https://rel.ink/api/links/", data=payload)
+    ret = json.dumps({"url": "https://rel.ink/" + r.json()["hashid"]})
     return HttpResponse(ret, content_type="application/json")
 
 
