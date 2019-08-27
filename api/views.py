@@ -256,7 +256,7 @@ def relink(request):
     url = request.GET.get("url", "")
     payload = {"url": url}
     r = requests.post("https://rel.ink/api/links/", data=payload)
-    ret = json.dumps({"url": "https://rel.ink/"+r.json()["hashid"]})
+    ret = json.dumps({"url": "https://rel.ink/" + r.json()["hashid"]})
     return HttpResponse(ret, content_type="application/json")
 
 
