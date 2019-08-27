@@ -38,7 +38,10 @@ def providers(request):
             "name": "shrturi.com",
             "url": request.scheme + "://" + host + reverse(shrturi),
         },
-        {"name": "cleanuri.com", "url": request.scheme + "://" + host + reverse(cleanuri)},
+        {
+            "name": "cleanuri.com",
+            "url": request.scheme + "://" + host + reverse(cleanuri),
+        },
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
