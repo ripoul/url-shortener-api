@@ -38,6 +38,10 @@ def providers(request):
             "name": "shrturi.com",
             "url": request.scheme + "://" + host + reverse(shrturi),
         },
+        {
+            "name": "cleanuri.com",
+            "url": request.scheme + "://" + host + reverse(cleanuri),
+        },
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -231,6 +235,16 @@ def shrturi(request):
     url = request.GET.get("url", "")
     payload = {"url": url}
     r = requests.post("https://shrturi.com/api/v1/shorten", data=payload)
+    ret = json.dumps({"url": r.json()["result_url"]})
+    return HttpResponse(ret, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def cleanuri(request):
+    url = request.GET.get("url", "")
+    payload = {"url": url}
+    r = requests.post("https://cleanuri.com/api/v1/shorten", data=payload)
     ret = json.dumps({"url": r.json()["result_url"]})
     return HttpResponse(ret, content_type="application/json")
 
