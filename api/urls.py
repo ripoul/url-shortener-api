@@ -18,5 +18,6 @@ urlpatterns = [
     path("tinycc", views.tinycc, name="tinycc"),
     path("shrturi", views.shrturi, name="shrturi"),
     path("cleanuri", views.cleanuri, name="cleanuri"),
+    path("relink", views.relink, name="relink"),
     path("qrcode", views.qrcode_view, name="qrcode"),
 ]
