@@ -17,5 +17,6 @@ urlpatterns = [
     path("qpsru", views.qpsru, name="qpsru"),
     path("tinycc", views.tinycc, name="tinycc"),
     path("shrturi", views.shrturi, name="shrturi"),
+    path("cleanuri", views.cleanuri, name="cleanuri"),
     path("qrcode", views.qrcode_view, name="qrcode"),
 ]
