@@ -34,6 +34,10 @@ def providers(request):
         {"name": "da.gd", "url": request.scheme + "://" + host + reverse(dagd)},
         {"name": "qps.ru", "url": request.scheme + "://" + host + reverse(qpsru)},
         {"name": "tiny.cc", "url": request.scheme + "://" + host + reverse(tinycc)},
+        {
+            "name": "shrturi.com",
+            "url": request.scheme + "://" + host + reverse(shrturi),
+        },
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -218,6 +222,16 @@ def tinycc(request):
     }
     r = requests.get("https://tiny.cc/", params=payload, headers=headers)
     ret = json.dumps({"url": r.json()["results"]["short_url"]})
+    return HttpResponse(ret, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def shrturi(request):
+    url = request.GET.get("url", "")
+    payload = {"url": url}
+    r = requests.post("https://shrturi.com/api/v1/shorten", data=payload)
+    ret = json.dumps({"url": r.json()["result_url"]})
     return HttpResponse(ret, content_type="application/json")
 
 
