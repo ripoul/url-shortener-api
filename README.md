@@ -14,7 +14,7 @@
 
 The api endpoint is at http://url-shortener.api.ripoul.fr/api/ or https://url-shortener-ripoul.herokuapp.com.
 
-Documentation can be found [here](https://app.swaggerhub.com/apis-docs/ripoul/url-shortener/1.0.0)
+Documentation can be found [here](https://app.swaggerhub.com/apis-docs/ripoul/url-shortener/1.0.0).
 
 Here some usefull request : 
 - `http://url-shortener.api.ripoul.fr/api/providers` to list the available providers
