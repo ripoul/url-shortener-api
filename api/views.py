@@ -9,6 +9,7 @@ from django.views.decorators.http import require_http_methods
 from .middleware import APIMiddleware
 from django.utils.decorators import decorator_from_middleware
 import qrcode
+from .utils import get_vars
 
 
 @require_http_methods(["GET"])
@@ -69,7 +70,7 @@ def rebrandly(request):
 
     requestHeaders = {
         "Content-type": "application/json",
-        "apikey": os.getenv("rebrandlyAPI"),
+        "apikey": get_vars("rebrandlyAPI"),
         "workspace": "3e8f5fd7ef014e58b9f605737d91c750",
     }
 
@@ -94,7 +95,7 @@ def rebrandly(request):
 @decorator_from_middleware(APIMiddleware)
 def cuttly(request):
     url = request.GET.get("url", "")
-    payload = {"short": url, "key": os.getenv("cuttlyAPI")}
+    payload = {"short": url, "key": get_vars("cuttlyAPI")}
     r = requests.get("https://cutt.ly/api/api.php", params=payload)
     ret = json.dumps({"url": r.json()["url"]["shortLink"]})
     return HttpResponse(ret, content_type="application/json")
@@ -104,11 +105,11 @@ def cuttly(request):
 @decorator_from_middleware(APIMiddleware)
 def bitly(request):
     url = request.GET.get("url", "")
-    linkRequest = {"long_url": url, "group_guid": os.getenv("bittlyAPIgroup")}
+    linkRequest = {"long_url": url, "group_guid": get_vars("bittlyAPIgroup")}
 
     requestHeaders = {
         "Content-type": "application/json",
-        "Authorization": "Bearer " + os.getenv("bitlyAPI"),
+        "Authorization": "Bearer " + get_vars("bitlyAPI"),
     }
 
     r = requests.post(
@@ -218,8 +219,8 @@ def tinycc(request):
         "format": "json",
         "m": "shorten",
         "longUrl": url,
-        "login": os.getenv("tinyccLogin"),
-        "apiKey": os.getenv("tinyccAPI"),
+        "login": get_vars("tinyccLogin"),
+        "apiKey": get_vars("tinyccAPI"),
     }
     headers = {
         "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux) Gecko/20100101 " "Firefox/61.0"
