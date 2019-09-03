@@ -12,7 +12,7 @@
 
 ### 🏠 [Homepage](https://github.com/ripoul/url-shortener-api)
 
-The api endpoint is at http://url-shortener.api.ripoul.fr/api/ or https://url-shortener-ripoul.herokuapp.com.
+The api endpoint is at https://url-shortener.api.ripoul.fr/api/.
 
 Documentation can be found [here](https://app.swaggerhub.com/apis-docs/ripoul/url-shortener/1.0.0).
 
