@@ -18,8 +18,9 @@ def providers(request):
         host = request.META["HTTP_HOST"]
     except KeyError:
         host = ""
-    print("____________________")
-    print(request.META["X-Forwarded-Proto"])
+    scheme = "http"
+    if request.is_secure():
+        scheme = "https"
 
     ret = [
         {
