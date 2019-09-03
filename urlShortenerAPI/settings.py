@@ -30,7 +30,7 @@ DEBUG = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.getenv("SERVER_SOFTWARE", "").startswith("Google App Engine/"):
-    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_PROXY_SSL_HEADER = ("X-Forwarded-Proto", "https")
     DEBUG = False
 
 
