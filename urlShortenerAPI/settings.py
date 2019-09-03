@@ -26,8 +26,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "14&d%!!gv3#nx*vhp=djuhhqazpafgovcnu6z=p_3!_^70u66p"
 
+DEBUG=True
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = distutils.util.strtobool(os.getenv("DEBUG", "True"))
+if os.getenv("SERVER_SOFTWARE", "").startswith("Google App Engine/"):
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    DEBUG = False
 
 
 ALLOWED_HOSTS = ["*"]
