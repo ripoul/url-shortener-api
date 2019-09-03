@@ -30,7 +30,7 @@ DEBUG = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.getenv("SERVER_SOFTWARE", "").startswith("gunicorn"):
-    SECURE_PROXY_SSL_HEADER = ("X-Forwarded-Proto", "https")
+    SECURE_PROXY_SSL_HEADER = ("X-Forwarded-Proto", "HTTPS")
     DEBUG = False
 
 
