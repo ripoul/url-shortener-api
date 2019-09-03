@@ -23,7 +23,7 @@ def providers(request):
         scheme = "https"
     print("_____________")
     try:
-        print(request.META["X-FORWARDED-PROTO"])
+        print(request.META["HTTP_X_FORWARDED_PROTO"])
     except KeyError:
         print("rien")
 
