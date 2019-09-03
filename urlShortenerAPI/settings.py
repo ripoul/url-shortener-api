@@ -29,9 +29,9 @@ SECRET_KEY = "14&d%!!gv3#nx*vhp=djuhhqazpafgovcnu6z=p_3!_^70u66p"
 DEBUG = True
 
 print("___________________")
-print(os.getenv('SERVER_SOFTWARE'))
+print(os.getenv("SERVER_SOFTWARE"))
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine/'):
+if os.getenv("SERVER_SOFTWARE", "").startswith("Google App Engine/"):
     SECURE_PROXY_SSL_HEADER = ("X-Forwarded-Proto", "https")
     DEBUG = False
 
