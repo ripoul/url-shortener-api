@@ -1,5 +1,5 @@
 runtime: python37
-entrypoint: gunicorn -b :8080 urlShortenerAPI.wsgi
+entrypoint: gunicorn -b :$PORT urlShortenerAPI.wsgi
 
 handlers:
 - url: /static

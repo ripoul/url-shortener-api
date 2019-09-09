@@ -29,7 +29,7 @@ SECRET_KEY = "14&d%!!gv3#nx*vhp=djuhhqazpafgovcnu6z=p_3!_^70u66p"
 DEBUG = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.getenv("SERVER_SOFTWARE", "").startswith("gunicorn"):
+if os.getenv("GAE_ENV", "").startswith("standard"):
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     DEBUG = False
 
