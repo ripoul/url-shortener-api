@@ -22,13 +22,13 @@ Here some usefull request :
 
 I've made a web interface. You can find the code [here](https://github.com/ripoul/url-shortener) and the live demo [here](https://url-shortener.ripoul.fr).
 
-## Install
+## :hammer: Install
 
 ```sh
 pip install -r requirements.txt
 ```
 
-## Usage
+## :wrench: Usage
 
 ```sh
 python manage.py runserver
@@ -42,7 +42,7 @@ If you want all the features, you will need a `.env` file with six items in it :
 - tinyccAPI -> contains the api key from tinycc
 - tinyccLogin -> contains the login of tinycc
 
-## Run tests
+## :white_check_mark: Run tests
 
 ```sh
 python manage.py test
