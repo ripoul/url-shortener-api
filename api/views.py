@@ -44,6 +44,7 @@ def providers(request):
             "url": request.scheme + "://" + host + reverse(cleanuri),
         },
         {"name": "rel.ink", "url": request.scheme + "://" + host + reverse(relink)},
+        {"name": "kutt.it", "url": request.scheme + "://" + host + reverse(kuttit)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -269,3 +270,15 @@ def qrcode_view(request):
     response = HttpResponse(content_type="image/png")
     img.save(response, "PNG")
     return response
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def kuttit(request):
+    url = request.GET.get("url", "")
+    payload = {"target": url}
+    requestHeaders = {
+        "X-API-Key": get_vars("kuttitAPI"),
+    }
+    r = requests.post("https://kutt.it/api/url/submit", data=payload, headers=requestHeaders)
+    ret = json.dumps({"url": r.json()["shortUrl"]})
+    return HttpResponse(ret, content_type="application/json")
