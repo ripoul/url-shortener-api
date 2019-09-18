@@ -21,4 +21,5 @@ urlpatterns = [
     path("relink", views.relink, name="relink"),
     path("qrcode", views.qrcode_view, name="qrcode"),
     path("kuttit", views.kuttit, name="kuttit"),
+    path("vgd", views.vgd, name="vgd"),
 ]

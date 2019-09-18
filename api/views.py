@@ -45,6 +45,7 @@ def providers(request):
         },
         {"name": "rel.ink", "url": request.scheme + "://" + host + reverse(relink)},
         {"name": "kutt.it", "url": request.scheme + "://" + host + reverse(kuttit)},
+        {"name": "v.gd", "url": request.scheme + "://" + host + reverse(vgd)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -282,4 +283,14 @@ def kuttit(request):
         "https://kutt.it/api/url/submit", data=payload, headers=requestHeaders
     )
     ret = json.dumps({"url": r.json()["shortUrl"]})
+    return HttpResponse(ret, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def vgd(request):
+    url = request.GET.get("url", "")
+    payload = {"url": url, "format": "simple"}
+    r = requests.get("https://v.gd/create.php", params=payload)
+    ret = json.dumps({"url": r.text})
     return HttpResponse(ret, content_type="application/json")
