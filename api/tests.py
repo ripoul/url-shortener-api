@@ -7,7 +7,7 @@ class ProviderCase(TestCase):
         c = Client()
         response = c.get("/api/providers")
         url = response.json()
-        self.assertTrue(len(url) == 16)
+        self.assertTrue(len(url) == 17)
 
     def test_only_get(self):
         c = Client()
@@ -318,4 +318,22 @@ class kuttitCase(TestCase):
     def test_only_get(self):
         c = Client()
         response = c.post("/api/kuttit")
+        self.assertEqual(response.status_code, 405, "unexpected return code")
+
+
+class vgdCase(TestCase):
+    def test_url_contains_provider(self):
+        c = Client()
+        response = c.get("/api/vgd", {"url": "https://www.google.fr"})
+        url = response.json()["url"]
+        self.assertTrue("https://v.gd/" in url)
+
+    def test_if_no_param(self):
+        c = Client()
+        response = c.get("/api/vgd")
+        self.assertEqual(response.status_code, 400, "unexpected return code")
+
+    def test_only_get(self):
+        c = Client()
+        response = c.post("/api/vgd")
         self.assertEqual(response.status_code, 405, "unexpected return code")
