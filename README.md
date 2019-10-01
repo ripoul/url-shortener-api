@@ -34,13 +34,14 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
-If you want all the features, you will need a `.env` file with six items in it : 
+If you want all the features, you will need a `.env` file with 7 items in it : 
 - cuttlyAPI -> contains the api key for cuttly
 - rebrandlyAPI -> contains the api key for rebrandly
 - bittlyAPIgroup -> contains the api group id from bittly
 - bitlyAPI -> contains the api key from bittly
 - tinyccAPI -> contains the api key from tinycc
 - tinyccLogin -> contains the login of tinycc
+- kuttitAPI -> contains the login of kuttit
 
 ## :white_check_mark: Run tests
 
