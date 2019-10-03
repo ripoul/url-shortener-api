@@ -46,6 +46,7 @@ def providers(request):
         {"name": "rel.ink", "url": request.scheme + "://" + host + reverse(relink)},
         {"name": "kutt.it", "url": request.scheme + "://" + host + reverse(kuttit)},
         {"name": "v.gd", "url": request.scheme + "://" + host + reverse(vgd)},
+        {"name": "zws.im", "url": request.scheme + "://" + host + reverse(zwsim)},
     ]
     return HttpResponse(json.dumps(ret), content_type="application/json")
 
@@ -293,4 +294,14 @@ def vgd(request):
     payload = {"url": url, "format": "simple"}
     r = requests.get("https://v.gd/create.php", params=payload)
     ret = json.dumps({"url": r.text})
+    return HttpResponse(ret, content_type="application/json")
+
+
+@require_http_methods(["GET"])
+@decorator_from_middleware(APIMiddleware)
+def zwsim(request):
+    url = request.GET.get("url", "")
+    payload = {"url": url}
+    r = requests.get("https://zws.im/api/shortenURL", params=payload)
+    ret = json.dumps({"url": "https://zws.im/" + r.json()["short"]})
     return HttpResponse(ret, content_type="application/json")
