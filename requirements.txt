@@ -9,7 +9,7 @@ coverage==4.5.4
 django-cors-headers==3.1.1
 dj-database-url==0.5.0
 Django==2.2.6
-google-api-core==1.14.2
+google-api-core==1.14.3
 google-auth==1.6.3
 google-cloud-core==1.0.3
 google-cloud-firestore==1.4.0
