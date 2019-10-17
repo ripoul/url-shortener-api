@@ -48,7 +48,7 @@ class RebrandlyCase(TestCase):
 
         requestHeaders = {
             "Content-type": "application/json",
-            "Authorization": "Bearer " + get_vars("rebrandlyAPI"),
+            "apikey": get_vars("rebrandlyAPI"),
         }
 
         r = requests.delete(
