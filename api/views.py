@@ -86,7 +86,7 @@ def rebrandly(request):
 
     if r.status_code == requests.codes.ok:
         link = r.json()
-        ret = json.dumps({"url": link["shortUrl"]})
+        ret = json.dumps({"url": link["shortUrl"], "id": link["id"]})
         return HttpResponse(ret, content_type="application/json")
 
     ret = json.dumps(
