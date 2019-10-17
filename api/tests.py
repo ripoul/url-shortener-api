@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 import json
-
+from .utils import get_vars
 
 class ProviderCase(TestCase):
     def test_nb_providers(self):
