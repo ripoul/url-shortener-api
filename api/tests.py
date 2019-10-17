@@ -38,7 +38,18 @@ class RebrandlyCase(TestCase):
         c = Client()
         response = c.get("/api/rebrandly", {"url": "https://www.google.fr"})
         url = response.json()["url"]
+        urlID = response.json()["id"]
         self.assertTrue("rebrand.ly" in url)
+
+        requestHeaders = {
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + get_vars("rebrandlyAPI"),
+        }
+
+        r = requests.delete(
+            "https://api.rebrandly.com/v1/links/"+urlID,
+            headers=requestHeaders,
+        )
 
     def test_if_no_param(self):
         c = Client()
