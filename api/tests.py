@@ -47,8 +47,7 @@ class RebrandlyCase(TestCase):
         }
 
         r = requests.delete(
-            "https://api.rebrandly.com/v1/links/"+urlID,
-            headers=requestHeaders,
+            "https://api.rebrandly.com/v1/links/" + urlID, headers=requestHeaders
         )
 
     def test_if_no_param(self):
