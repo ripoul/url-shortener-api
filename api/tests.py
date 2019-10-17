@@ -41,7 +41,7 @@ class RebrandlyCase(TestCase):
         response = c.get("/api/rebrandly", {"url": "https://www.google.fr"})
         url = response.json()["url"]
         urlID = response.json()["id"]
-
+        print(urlID)
         print("on continue ?")
 
         self.assertTrue("rebrand.ly" in url)
