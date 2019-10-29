@@ -278,7 +278,7 @@ def qrcode_view(request):
 @decorator_from_middleware(APIMiddleware)
 def kuttit(request):
     url = request.GET.get("url", "")
-    payload = {"target": url}
+    payload = {"target": url, "reuse": "true"}
     requestHeaders = {"X-API-Key": get_vars("kuttitAPI")}
     r = requests.post(
         "https://kutt.it/api/url/submit", data=payload, headers=requestHeaders
