@@ -213,7 +213,7 @@ class qpsruCase(TestCase):
         c = Client()
         response = c.get("/api/qpsru", {"url": "https://www.google.fr"})
         url = response.json()["url"]
-        self.assertTrue("http://qps.ru/" in url)
+        self.assertTrue("https://qps.ru/" in url)
 
     def test_if_no_param(self):
         c = Client()
