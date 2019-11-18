@@ -208,7 +208,7 @@ def dagd(request):
 def qpsru(request):
     url = request.GET.get("url", "")
     payload = {"url": url}
-    r = requests.get("http://qps.ru/api", params=payload)
+    r = requests.get("https://qps.ru/api", params=payload)
     ret = json.dumps({"url": r.text})
     return HttpResponse(ret, content_type="application/json")
 
