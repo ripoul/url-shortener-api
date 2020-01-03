@@ -152,7 +152,7 @@ def m360us(request):
 def osdblink(request):
     url = request.GET.get("url", "")
     payload = {"url": url}
-    r = requests.post("http://osdb.link/", data=payload)
+    r = requests.post("https://osdb.link/", data=payload)
     try:
         found = re.search(r"(http://osdb.link/[a-zA-Z0-9]+)", r.text).group(1)
     except AttributeError:
