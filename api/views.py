@@ -86,7 +86,7 @@ def rebrandly(request):
 
     if r.status_code == requests.codes.ok:
         link = r.json()
-        ret = json.dumps({"url": link["shortUrl"]})
+        ret = json.dumps({"url": link["shortUrl"], "id": link["id"]})
         return HttpResponse(ret, content_type="application/json")
 
     ret = json.dumps(
@@ -152,7 +152,7 @@ def m360us(request):
 def osdblink(request):
     url = request.GET.get("url", "")
     payload = {"url": url}
-    r = requests.post("http://osdb.link/", data=payload)
+    r = requests.post("https://osdb.link/", data=payload)
     try:
         found = re.search(r"(http://osdb.link/[a-zA-Z0-9]+)", r.text).group(1)
     except AttributeError:
@@ -208,7 +208,7 @@ def dagd(request):
 def qpsru(request):
     url = request.GET.get("url", "")
     payload = {"url": url}
-    r = requests.get("http://qps.ru/api", params=payload)
+    r = requests.get("https://qps.ru/api", params=payload)
     ret = json.dumps({"url": r.text})
     return HttpResponse(ret, content_type="application/json")
 
@@ -278,7 +278,7 @@ def qrcode_view(request):
 @decorator_from_middleware(APIMiddleware)
 def kuttit(request):
     url = request.GET.get("url", "")
-    payload = {"target": url}
+    payload = {"target": url, "reuse": "true"}
     requestHeaders = {"X-API-Key": get_vars("kuttitAPI")}
     r = requests.post(
         "https://kutt.it/api/url/submit", data=payload, headers=requestHeaders

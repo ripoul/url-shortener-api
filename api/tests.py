@@ -1,5 +1,7 @@
 from django.test import TestCase, Client
 import json
+from .utils import get_vars
+import requests
 
 
 class ProviderCase(TestCase):
@@ -39,7 +41,18 @@ class RebrandlyCase(TestCase):
         c = Client()
         response = c.get("/api/rebrandly", {"url": "https://www.google.fr"})
         url = response.json()["url"]
+        urlID = response.json()["id"]
+
         self.assertTrue("rebrand.ly" in url)
+
+        requestHeaders = {
+            "Content-type": "application/json",
+            "apikey": get_vars("rebrandlyAPI"),
+        }
+
+        r = requests.delete(
+            "https://api.rebrandly.com/v1/links/" + urlID, headers=requestHeaders
+        )
 
     def test_if_no_param(self):
         c = Client()
@@ -204,7 +217,7 @@ class qpsruCase(TestCase):
         c = Client()
         response = c.get("/api/qpsru", {"url": "https://www.google.fr"})
         url = response.json()["url"]
-        self.assertTrue("http://qps.ru/" in url)
+        self.assertTrue("https://qps.ru/" in url)
 
     def test_if_no_param(self):
         c = Client()
