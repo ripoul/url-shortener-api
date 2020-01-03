@@ -34,6 +34,7 @@ class tinyurlCase(TestCase):
 
 
 class RebrandlyCase(TestCase):
+    @skipIf(not get_vars("rebrandlyAPI"), "rebrandlyAPI env vars not set")
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/rebrandly", {"url": "https://www.google.fr"})
@@ -52,6 +53,7 @@ class RebrandlyCase(TestCase):
 
 
 class cuttlylCase(TestCase):
+    @skipIf(not get_vars("cuttlyAPI"), "cuttlyAPI env vars not set")
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/cuttly", {"url": "https://www.google.fr"})
@@ -70,6 +72,8 @@ class cuttlylCase(TestCase):
 
 
 class bitlylCase(TestCase):
+    @skipIf(not get_vars("bitlyAPI"), "bitlyAPI env vars not set")
+    @skipIf(not get_vars("bittlyAPIgroup"), "bittlyAPIgroup env vars not set")
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/bitly", {"url": "https://www.google.fr"})
@@ -214,6 +218,8 @@ class qpsruCase(TestCase):
 
 
 class tinyccCase(TestCase):
+    @skipIf(not get_vars("tinyccAPI"), "tinyccAPI env vars not set")
+    @skipIf(not get_vars("tinyccLogin"), "tinyccLogin env vars not set")
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/tinycc", {"url": "https://www.google.fr"})
@@ -304,6 +310,7 @@ class qrcodeCase(TestCase):
 
 
 class kuttitCase(TestCase):
+    @skipIf(not get_vars("kuttitAPI"), "I don't want to run this test yet")
     def test_url_contains_provider(self):
         c = Client()
         response = c.get("/api/kuttit", {"url": "https://www.google.fr"})
