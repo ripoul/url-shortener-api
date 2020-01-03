@@ -1,4 +1,5 @@
 from django.test import TestCase, Client
+from unittest import skipIf
 import json
 from .utils import get_vars
 import requests
