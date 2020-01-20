@@ -10,7 +10,7 @@ django-cors-headers==3.2.1
 dj-database-url==0.5.0
 Django==3.0.2
 google-api-core==1.16.0
-google-auth==1.10.0
+google-auth==1.10.1
 google-cloud-core==1.2.0
 google-cloud-firestore==1.6.1
 google-cloud-storage==1.25.0
