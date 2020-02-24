@@ -28,7 +28,7 @@ pyasn1-modules==0.2.8
 python-dotenv==0.11.0
 pytz==2019.3
 qrcode==6.1
-requests==2.22.0
+requests==2.23.0
 rsa==4.0
 six==1.14.0
 sqlparse==0.3.0
