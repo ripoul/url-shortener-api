@@ -33,7 +33,6 @@ def providers(request):
         {"name": "chilp.it", "url": request.scheme + "://" + host + reverse(chilpit)},
         {"name": "clck.ru", "url": request.scheme + "://" + host + reverse(clckru)},
         {"name": "da.gd", "url": request.scheme + "://" + host + reverse(dagd)},
-        {"name": "qps.ru", "url": request.scheme + "://" + host + reverse(qpsru)},
         {"name": "tiny.cc", "url": request.scheme + "://" + host + reverse(tinycc)},
         {
             "name": "shrturi.com",
@@ -199,16 +198,6 @@ def dagd(request):
     url = request.GET.get("url", "")
     payload = {"url": url}
     r = requests.get("https://da.gd/shorten", params=payload)
-    ret = json.dumps({"url": r.text})
-    return HttpResponse(ret, content_type="application/json")
-
-
-@require_http_methods(["GET"])
-@decorator_from_middleware(APIMiddleware)
-def qpsru(request):
-    url = request.GET.get("url", "")
-    payload = {"url": url}
-    r = requests.get("https://qps.ru/api", params=payload)
     ret = json.dumps({"url": r.text})
     return HttpResponse(ret, content_type="application/json")
 

@@ -213,24 +213,6 @@ class dagdCase(TestCase):
         self.assertEqual(response.status_code, 405, "unexpected return code")
 
 
-class qpsruCase(TestCase):
-    def test_url_contains_provider(self):
-        c = Client()
-        response = c.get("/api/qpsru", {"url": "https://www.google.fr"})
-        url = response.json()["url"]
-        self.assertTrue("https://qps.ru/" in url)
-
-    def test_if_no_param(self):
-        c = Client()
-        response = c.get("/api/qpsru")
-        self.assertEqual(response.status_code, 400, "unexpected return code")
-
-    def test_only_get(self):
-        c = Client()
-        response = c.post("/api/qpsru")
-        self.assertEqual(response.status_code, 405, "unexpected return code")
-
-
 class tinyccCase(TestCase):
     @skipIf(not get_vars("tinyccAPI"), "tinyccAPI env vars not set")
     @skipIf(not get_vars("tinyccLogin"), "tinyccLogin env vars not set")

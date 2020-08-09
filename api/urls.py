@@ -14,7 +14,6 @@ urlpatterns = [
     path("chilpit", views.chilpit, name="chilpit"),
     path("clckru", views.clckru, name="clckru"),
     path("dagd", views.dagd, name="dagd"),
-    path("qpsru", views.qpsru, name="qpsru"),
     path("tinycc", views.tinycc, name="tinycc"),
     path("shrturi", views.shrturi, name="shrturi"),
     path("cleanuri", views.cleanuri, name="cleanuri"),
