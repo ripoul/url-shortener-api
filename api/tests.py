@@ -10,7 +10,7 @@ class ProviderCase(TestCase):
         c = Client()
         response = c.get("/api/providers")
         url = response.json()
-        self.assertTrue(len(url) == 18)
+        self.assertTrue(len(url) == 17)
 
     def test_only_get(self):
         c = Client()
